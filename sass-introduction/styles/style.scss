@@ -1,0 +1,158 @@
+@import "mixins";
+@import "variables";
+
+
+body {
+  font: 100% "Space Mono", monospace;
+  color: $body-font-color;
+  margin: 16px;
+  padding: $padding;
+  background-color: $bg-color;
+  background-image: radial-gradient(#fff, rgba(255, 255, 255, 0.2) 2px, transparent 40px), radial-gradient(#fff, rgba(255, 255, 255, 0.15) 1px, transparent 30px), radial-gradient(#fff, rgba(255, 255, 255, 0.1) 2px, transparent 40px), radial-gradient(rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0.1) 2px, transparent 30px);
+  background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+  background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+  background-attachment: fixed
+}
+
+article {
+  display: flex;
+  flex-wrap: wrap;
+
+
+  section {
+    @include shadow;
+    flex-grow: 1;
+    flex-basis: 45%;
+    border: 1px silver solid;
+    padding: $padding;
+    margin: 16px;
+    clear: both;
+    overflow: auto;
+    box-sizing: border-box;
+
+    &#selling-points {
+      flex-grow: 2;
+      flex-basis: 100%
+    }
+  }
+
+  code {
+    background: $bg-color;
+    border: 1px solid #ddd;
+    color: #666;
+    page-break-inside: avoid;
+    font-family: monospace;
+    font-size: 15px;
+    line-height: 1.6;
+    margin-bottom: 1.6em;
+    max-width: 100%;
+    overflow: auto;
+    padding: $padding;
+    display: block;
+    word-wrap: break-word;
+
+    &:before {
+      float: left;
+      width: 40%
+    }
+
+    &:after {
+      float: right;
+      width: 40%
+    }
+  }
+}
+
+h1,
+h2,
+h6 {
+  color: #6B8EFF
+}
+
+h1,
+{
+  text-align: center
+}
+
+h6 {
+  text-align: center;
+  font-size: 2em;
+  margin-bottom: 0px
+}
+
+footer {
+  h6 {
+    padding: ($padding * 2);
+  }
+}
+
+%message-shared {
+  border: 1px solid #ccc;
+  padding: $padding;
+  color: $body-font-color;
+  background-color: $bg-color;
+  width: 100%
+}
+
+.message {
+  @extend %message-shared
+}
+
+.success {
+  @extend %message-shared;
+  background-color: $success;
+
+}
+
+.error {
+  @extend %message-shared;
+  background-color: $error;
+}
+
+.warning {
+  @extend %message-shared;
+  background-color: $warning;
+}
+
+header {
+  h1,
+  h2 {
+    text-align: center
+  }
+
+  nav {
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      display: inline-block;
+
+      a {
+        color: white;
+        padding: $padding;
+
+        &:active {
+          background-color: yellow;
+        }
+      }
+
+      .blue {
+        @extend a;
+
+        &:active {
+          color: $link-blue;
+        }
+      }
+
+      .red {
+        @extend a;
+        padding: ($padding * 0.5);
+
+        &:active {
+          color: $link-red;
+        }
+      }
+    }
+  }
+}
